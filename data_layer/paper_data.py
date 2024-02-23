@@ -74,7 +74,7 @@ def yesterday_date(given_date: str = None):
     return (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d")
 
 
-def yesterday_papers(save_path, given_date: str = None):
+def fetch_papers(save_path, given_date: str = None):
     client = arxiv.Client()
     
     dfs = []
@@ -85,16 +85,16 @@ def yesterday_papers(save_path, given_date: str = None):
             max_results=500,
             sort_by=arxiv.SortCriterion.SubmittedDate
         )
-        print(f'fetching cat:{cat}...')
+        print(f' - fetching cat:{cat}...')
         results = client.results(results)
-        print(f'parse to dataframe...')
+        print(f' - parse to dataframe...')
         dfs.append(to_df(results, save_path, yesterday_date(given_date)))
         paper_nums += dfs[-1].shape[0]
         time.sleep(3)
     
-    print(f'Get {paper_nums} papers in {yesterday_date(given_date)}!')
+    print(f'- get {paper_nums} papers in {yesterday_date(given_date)}!')
 
-    print(f'saving to {save_path}...')
+    print(f'- saving to {save_path}...')
     all_df = pd.concat(dfs, axis=0)
     all_df = all_df.drop_duplicates(subset=['title'], ignore_index=True)
     all_df.to_csv(save_path, index=False)

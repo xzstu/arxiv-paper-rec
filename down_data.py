@@ -1,10 +1,12 @@
-from data_layer.paper_data import yesterday_papers, yesterday_date
+from data_layer.paper_data import fetch_papers
 import os
-from datetime import datetime, timedelta
+import argparse
 
 
 if __name__ == '__main__':
-    given_date = (datetime.now() - timedelta(days=2)).strftime('%Y-%m-%d')
-    save_path = os.path.join('./database/', yesterday_date(given_date) + "_papers.csv")
-    yesterday_papers(save_path, given_date)
-
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--date', type=str)
+    args = parser.parse_args()
+    save_path = os.path.join('./database/', args.date + "_papers.csv")
+    print(f'- fetch paper in date {args.date}')
+    fetch_papers(save_path, args.date)
