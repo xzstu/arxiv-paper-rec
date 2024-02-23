@@ -43,7 +43,7 @@ def to_html(df, idxs):
 def run():
     user_cfgs = read_user_profiles('./configs/users_profile')
     df = get_candidates_df('2024-02-21')
-    topk = 5
+    topk = 10
     result = {}
     for cfg in user_cfgs:
         idxs = recommend(','.join(cfg['interests']), df['abstract'].tolist(), topk)
