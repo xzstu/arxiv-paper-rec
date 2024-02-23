@@ -1,0 +1,32 @@
+# note !!!
+# 1. make no more than one request every three seconds, and limit requests to a single connection at a time
+#    (https://info.arxiv.org/help/api/tou.html#rate-limits)
+# 
+
+
+1、数据层建设
+
+1.1 用户数据建设
+
+用户基本信息表：
+ - user_id, user_name, interest, requirement
+user_id: 用户唯一标识
+user_name: 用户账户名
+interest: 研究方向，感兴趣的方向
+requirement: 需要什么类型的论文
+
+
+1.2 文本数据建设
+
+文本信息表:
+ - paper_id, keyword, abstract, title, years, authors, ...
+
+
+2、召回层建设
+从每天大量的文本信息表中召回一批数据。
+
+3、排序层建设
+排序
+
+4、LLM分析建设
+LLM分析给出有什么帮助，类似的结果。
