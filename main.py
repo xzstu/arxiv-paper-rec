@@ -20,7 +20,8 @@ def read_user_profiles(dir_path: str):
     paths = list(PosixPath(dir_path).glob('*.yaml'))
     user_cfgs = []
     for path in paths:
-        user_cfgs.append(_read_user_profile(path))
+        if str(path).find('example.yaml') == -1:
+            user_cfgs.append(_read_user_profile(path))
     return user_cfgs
 
 
@@ -54,7 +55,7 @@ def run(date: str):
             to_html(df, idxs, date), 
             "Daily Paper Rec", 
             'AndrewGuan <884691896@qq.com>',
-            cfg['user_emails'], 
+            f"{cfg['username']} <{cfg['user_emails']}>", 
             cfg['user_emails']
         )
 
@@ -65,4 +66,3 @@ if __name__ == "__main__":
     args = parser.parse_args()
     
     run(args.date)
-    
