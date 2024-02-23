@@ -6,8 +6,8 @@ Done
 - basic functions. dayily paper featch and rec. send rec result to email.
 
 TODO:
-- Add date information for email message.
 - Design a more personalized email format.
 - Add LLM enhanced function.
+  - Select 1b model or a larger model????
   - LLM summary the paper content.
   - LLM personalized interpretation paper content.
