@@ -3,4 +3,8 @@ user_emails: xxx@xxxx.com,
 interests:
   - LLM
   - Large Language Model
+  - gpt
+  - multi-modal
+  - video
+  - mixture-of-experts
   - ...
